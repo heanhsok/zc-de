@@ -14,13 +14,25 @@ pip list
 
 
 ## Q3: 
-Answer: 15767
+Answer: 15612
 
 ```sql
-SELECT COUNT(1) FROM yellow_taxi_trips 
-	WHERE DATE_PART('year', lpep_pickup_datetime) = 2019
-		AND DATE_PART('month', lpep_pickup_datetime) = 9
-		AND DATE_PART('day', lpep_pickup_datetime) = 18
+SELECT COUNT(1) FROM green_taxi_trips 
+	WHERE 
+		lpep_pickup_datetime::date = '2019-09-18' AND 
+		lpep_dropoff_datetime::date = '2019-09-18'
+```
+
+```sql
+SELECT COUNT(1) FROM green_taxi_trips 
+	WHERE
+		DATE_PART('year', lpep_pickup_datetime) = 2019 AND 
+		DATE_PART('month', lpep_pickup_datetime) = 9 AND 
+		DATE_PART('day', lpep_pickup_datetime) = 18 AND 
+		DATE_PART('year', lpep_dropoff_datetime) = 2019 AND
+		DATE_PART('month', lpep_dropoff_datetime) = 9 AND 
+		DATE_PART('day', lpep_dropoff_datetime) = 18
+		
 ```
 
 ## Q4: 
@@ -28,7 +40,7 @@ Answer: "2019-09-26"
 
 ```sql
 SELECT * 
-	FROM yellow_taxi_trips
+	FROM green_taxi_trips
 	ORDER BY trip_distance DESC
 ```
 
@@ -37,7 +49,7 @@ Answer: "Brooklyn", "Queens", "Manhattan"
 
 ```sql
 	SELECT "Borough", sum(total_amount)
-	FROM yellow_taxi_trips AS t1
+	FROM green_taxi_trips AS t1
 		LEFT JOIN zones AS t2
 			ON t1."PULocationID" = t2."LocationID"
 	GROUP BY "Borough"
@@ -52,7 +64,7 @@ Answer: JFK Airport
 			t1."PULocationID", t2."Zone" AS PUZone, t1."DOLocationID",  
 			t3."Zone" AS DOZone,
 			tip_amount
-		FROM yellow_taxi_trips AS t1
+		FROM green_taxi_trips AS t1
 			LEFT JOIN zones AS t2
 				ON t1."PULocationID" = t2."LocationID"
 			LEFT JOIN zones AS t3
