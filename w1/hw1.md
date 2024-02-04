@@ -48,10 +48,10 @@ SELECT *
 Answer: "Brooklyn", "Queens", "Manhattan"
 
 ```sql
-	SELECT "Borough", sum(total_amount)
+SELECT "Borough", sum(total_amount)
 	FROM green_taxi_trips AS t1
-		LEFT JOIN zones AS t2
-			ON t1."PULocationID" = t2."LocationID"
+	LEFT JOIN zones AS t2
+		ON t1."PULocationID" = t2."LocationID"
 	GROUP BY "Borough"
 	ORDER BY sum(total_amount) DESC
 ```
@@ -60,19 +60,19 @@ Answer: "Brooklyn", "Queens", "Manhattan"
 Answer: JFK Airport
 
 ```sql
-	SELECT 
-			t1."PULocationID", t2."Zone" AS PUZone, t1."DOLocationID",  
-			t3."Zone" AS DOZone,
-			tip_amount
-		FROM green_taxi_trips AS t1
-			LEFT JOIN zones AS t2
-				ON t1."PULocationID" = t2."LocationID"
-			LEFT JOIN zones AS t3
-				ON t1."DOLocationID" = t3."LocationID"
-		WHERE t2."Zone" = 'Astoria' AND 
-			DATE_PART('year', lpep_pickup_datetime) = 2019
-			AND DATE_PART('month', lpep_pickup_datetime) = 9
-		ORDER BY tip_amount DESC
+SELECT 
+	t1."PULocationID", t2."Zone" AS PUZone, t1."DOLocationID",  
+	t3."Zone" AS DOZone,
+	tip_amount
+	FROM green_taxi_trips AS t1
+		LEFT JOIN zones AS t2
+			ON t1."PULocationID" = t2."LocationID"
+		LEFT JOIN zones AS t3
+			ON t1."DOLocationID" = t3."LocationID"
+	WHERE t2."Zone" = 'Astoria' AND 
+		DATE_PART('year', lpep_pickup_datetime) = 2019
+		AND DATE_PART('month', lpep_pickup_datetime) = 9
+	ORDER BY tip_amount DESC
 ```
 
 
