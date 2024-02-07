@@ -180,7 +180,7 @@ def export_data_to_postgres(df: DataFrame, **kwargs) -> None:
         )
 ```
 
-# Step 3B: Export Green Taxi Data to GCS Partitioned Parquet
+## Step 3B: Export Green Taxi Data to GCS Partitioned Parquet
 ```python
 # export_green_taxi_to_gsc_partitioned_parquet.py
 
@@ -226,8 +226,12 @@ def export_data(data, *args, **kwargs):
 ## Question 1. Data Loading
 Answer: 266,855 rows x 20 columns
 
+Output from [Step 1: Load Green Taxi Data](#step-1-load-green-taxi-data)
+
 ## Question 2. Data Transformation
 Answer: 139,370 rows
+
+Output from [Step 2: Tranform Green Taxi Data](#step-2-tranform-green-taxi-data)
 
 ## Question 3. Data Transformation
 Answer:
