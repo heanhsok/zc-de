@@ -1,6 +1,11 @@
-*/data/*
+**/data/*
 */ny_taxi_postgres_data/*
-*/key/*
+**/key/*
+**/fhv/*
+**/fhvhv/*
+**/zones/*
+**/*.csv
+**/*.csv.gz
 
 
 # Created by https://www.toptal.com/developers/gitignore/api/python,macos,jupyternotebooks,spark,linux,terraform
